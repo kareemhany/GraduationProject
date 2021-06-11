@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: url('https://jooinn.com/images/night-sky-1.jpg');
+            
+        }
+        
+        a:link,
+        a:visited {
+            background-color: white;
+            color: black;
+            position: relative;
+            border: 10px solid;
+            padding: 10px solid Ghostwhite;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px;
+            height: 63px;
+            width: 63px
+        }
+        
+        a:hover,
+        a:active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+
+
+
+
+<script>
+
+   
+
+    window.onload = function() {
+        var imgX;
+        var imgY;
+        document.getElementById('myimage').addEventListener('click', function(e) {
+            var ratioX = e.target.naturalWidth / e.target.offsetWidth;
+            var ratioY = e.target.naturalHeight / e.target.offsetHeight;
+
+            var domX = e.x + window.pageXOffset - e.target.offsetLeft;
+            var domY = e.y + window.pageYOffset - e.target.offsetTop;
+
+            var imgX = Math.round(domX * ratioX);
+            var imgY = Math.round(domY * ratioY);
+            var a=document.getElementById("myimage").value;
+            console.log(imgX, imgY);
+             
+           
+            
+        })
+        document.getElementById('button_go').addEventListener('click', function(e) {
+            
+            $.ajax({
+                type: 'GET',
+                url: '/getpose/'+imgX+','+imgY,
+
+                success: function()
+                {
+                   console.log('gun');
+                }
+
+                 
+            })
+            
+	    
+	      
+		    
+		    /*$.post('/getpose','hamada',function(){console.log('ok')});*/
+		    
+		    
+	   
+		});
+	 };
+   
+</script>
+
+
+
+
+
+<body>
+
+
+
+    <img id="myimage" width="1000px" height="700px" src="/static/map_01.png" align="center">
+    <a href="/" align="left">
+        <img style="height: 65px" src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png">        
+    </a>
+ 
+</body>
+<body>
+<a href="/" align="left">
+        <img id=button_go style="height: 65px" src="https://www.pngarts.com/files/8/Green-Go-Button-PNG-Photo.png">        
+</body>
+
+</html>

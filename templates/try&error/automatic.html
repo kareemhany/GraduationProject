@@ -1,0 +1,121 @@
+<html>
+<head>
+<style>
+
+
+a:link, a:visited {
+ 
+    background-color:white;
+    color:black;
+    position:relative;
+    border:10px solid ;
+    
+    padding: 10px solid Ghostwhite;
+   text-decoration: none;
+   display: inline-block;
+   margin:20px;
+   height: 63px; 
+   width: 63px
+   
+     
+}
+body {
+            background-image: url('https://jooinn.com/images/night-sky-1.jpg');
+            
+        }
+ 
+a:hover, a:active   {
+  background-color: red;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+div.divImgContainer { position:absolute; top:100px; left:10px; bottom:10px; right:10px; }
+ div#divMark { position:fixed; background-color:green; width:10px; height:10px;}
+
+
+
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+
+    window.onload = function() {
+        var imgX;
+        var imgY;
+        document.getElementById('myimage').addEventListener('click', function(e) {
+            var ratioX = e.target.naturalWidth / e.target.offsetWidth;
+            var ratioY = e.target.naturalHeight / e.target.offsetHeight;
+
+            var domX = e.x + window.pageXOffset - e.target.offsetLeft;
+            var domY = e.y + window.pageYOffset - e.target.offsetTop;
+
+            imgX = Math.round(domX * ratioX);
+            imgY = Math.round(domY * ratioY);
+            var a=document.getElementById("myimage").value;
+            console.log(imgX, imgY);
+               var latlon = imgX + "," + imgY;
+               var img_url = "https://image.flaticon.com/icons/png/128/2991/2991231.png?center=+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+                   document.getElementById("myimage").innerHTML = "<img src='"+img_url+"'>";
+                           
+           
+            /*
+            $.ajax({
+                type: 'GET',
+                url: '/getpose/'+imgX+','+imgY,
+
+                success: function()
+                {
+                   console.log('gun');
+                }
+                 
+            })
+            
+            $.post('/getpose','hamada',function(){console.log('ok')});*/
+            
+            
+   
+        })
+        document.getElementById('button_go').addEventListener('click', function(e) {
+            
+            $.ajax({
+                type: 'GET',
+                url: '/getpose/'+imgX+','+imgY,
+
+                success: function()
+                {
+                   console.log('gun');
+                }
+
+                 
+            })
+            
+	    
+	      
+		    
+		    /*$.post('/getpose','hamada',function(){console.log('ok')});*/
+		    
+		    
+	   
+		});
+	    };
+	    
+    
+    </script>
+
+<body>
+</head>
+
+
+<img id="myimage" width="1000px" height="700px" src="/static/map_01.png" align="center"> <br>
+
+  <a href="/" align="left">
+        <img style="height: 65px" src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png">        
+    </a>
+<a align="left">
+        <img id=button_go style="height: 65px" src="https://www.pngarts.com/files/8/Green-Go-Button-PNG-Photo.png">        
+   </body> 
+</html>

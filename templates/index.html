@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>CIC web application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="/static/index.jpeg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+  </div>
+  
+ <!-- Navbar -->
+<div class="w3-middle">
+  <div class="w3-bar w3-grey w3-card">
+    <a  href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MODE<i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+       
+        <a href="/automatic" class="w3-bar-item w3-button">automatic</a>
+        <a href="/remote" class="w3-bar-item w3-button">Manual</a>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+
+  <!-- Images (service) -->
+  <img src="https://www.roboticstomorrow.com/images/articles/13986.jpg" alt="robot" class="w3-image" width="1000" height="500">
+  <img src="https://info.ehl.edu/hubfs/Blog-EHL-Insights/Blog-Header-EHL-Insights/robot%20covid.jpg" alt="robotII" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="https://sc04.alicdn.com/kf/HTB1ejhOXyDxK1Rjy1zcq6yGeXXaE.jpg" alt="robotIII" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="https://www.med-technews.com/downloads/244/download/robots.jpg?cb=b8d317fbf71131b1be8e24d62d81fa41&w=640" alt="robotIV" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="https://www.aamc.org/sites/default/files/robots-make-the-rounds-robot-medstar.jpg" alt="robot v" class="w3-image w3-margin-top" width="1000" height="500">
+
+  <!-- Contact -->
+  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
+    <h3 class="w3-center">Contact</h3>
+    <hr>
+    
+
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" required name="Name">
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" required name="Email">
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" required name="Message">
+      </div>
+      <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
+    </form><br>
+    <p>sponsered by <a href="https://tekomoro.com/" target="_blank" class="w3-hover-text-green">tekomoro</a></p>
+
+
+
+  </div>
+
+<!-- End page content -->
+</div>
+
+</body>
+</html>

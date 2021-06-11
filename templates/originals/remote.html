@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <script Language="Javascript">
+        var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+    </script>
+</head>
+
+
+<body>
+    <a href="/"><img style="height: 65px" src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png"></a>
+    <div style="text-align:center">
+
+        <h1> To Be Determined Later On </h1>
+
+
+        <img src="http://localhost:5001/video_feed" style="padding:20px;width:640px;height:480px;" align="right">
+        <br><br><br>
+
+        <span style="display:inline-block;padding:5px; font-size: 140%;font-weight: bold;">
+            <br>
+            <a href="/cmd/F"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Green_Arrow_Up.svg/1200px-Green_Arrow_Up.svg.png"></a>
+            <br><br>
+            <img style="padding-left: 5px">
+            <a href="/cmd/L"><img style="height: 70px"src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Green_Arrow_Left.svg"></a>
+            <img style="padding-left: 10px">
+            <a href="/cmd/S"><img style="height: 70px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Blank_stop_sign_octagon.svg/170px-Blank_stop_sign_octagon.svg.png"></a>
+            <img style="padding-left: 10px">
+            <a href="/cmd/R"><img style="height: 70px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Green_Arrow_Right.svg/1200px-Green_Arrow_Right.svg.png"></a>
+            <img style="padding-left: 5px">
+            <br><br>
+            <a href="/cmd/B"><img style="height: 70px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Green_Arrow_Down.svg/700px-Green_Arrow_Down.svg.png"></a>
+            <br><br>
+        </span>
+
+    </div>
+    <div>
+        <p id='sensor0'>0</p>
+        <p id='sensor1'>0</p>
+        <p id='sensor2'>0</p>
+        <p id='sensor3'>0</p>
+        <p id='sensor4'>0</p>
+        <p id='sensor5'>0</p>
+        <p id='sensor6'>0</p>
+        <p id='sensor7'>0</p>
+        <p id='sensor8'>0</p>
+        <p id='sensor9'>0</p>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        var myVar = setInterval(updateReadings, 1000);
+
+        function updateReadings() {
+            $.ajax({
+                url: '/getReadings',
+                type: 'get',
+                success: function(response) {
+                    var res = response.split(",");
+                    document.getElementById('sensor0').innerHTML = res[0];
+                    document.getElementById('sensor1').innerHTML = res[1];
+                    document.getElementById('sensor2').innerHTML = res[2];
+                    document.getElementById('sensor3').innerHTML = res[3];
+                    document.getElementById('sensor4').innerHTML = res[4];
+                    document.getElementById('sensor5').innerHTML = res[5];
+                    document.getElementById('sensor6').innerHTML = res[6];
+                    document.getElementById('sensor7').innerHTML = res[7];
+                    document.getElementById('sensor8').innerHTML = res[8];
+                    document.getElementById('sensor9').innerHTML = res[9];
+                }
+            })
+        }
+    </script>
+</body>
+
+<style>
+    .triangle-up {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid #555;
+    }
+    
+    a:link,
+    a:visited {
+        background-color: white;
+        position: relative;
+        border: 2px solid GhostWhite;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+        height: 70px;
+        width: 70px
+    }
+    
+    a:hover,
+    a:active {
+        background-color: grey;
+    }
+</style>
+
+</html>

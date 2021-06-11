@@ -1,0 +1,95 @@
+<html> 
+<head>
+<script Language="Javascript">
+var xmlhttp;
+xmlhttp=new XMLHttpRequest();
+</script>
+</head>
+<style>
+body {background-image:url(https://cdn.hipwallpaper.com/i/89/50/WCQKrM.jpg);
+margin:100px;
+  }
+h1 {
+color:white;
+
+}
+p {
+
+color:blue;
+text-font:20px;
+width:160px
+}
+a:link, a:visited {
+ 
+    background-color:white;
+    position:relative;
+    border:10px solid GhostWhite;
+   text-decoration: none;
+   display: inline-block;
+   margin:20px;
+   height: 63px; 
+   width: 63px
+   
+     
+}
+
+ 
+a:hover, a:active   {
+  background-color: red;
+}
+</style>
+<body>
+<a href="/"><img style="height: 65px"src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png"></a>
+<div style="text-align:center">
+<h1> To Be Determined Later On </h1>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        var myVar = setInterval(updateReadings, 1000);
+        function updateReadings() {
+            $.ajax({
+                url: '/getReadings',
+                type: 'get',
+                success: function getArraySum(data){
+                             var total=0;
+                             for(var i in data) {
+                             total += data[i];
+                                    }
+                        return total;
+}
+                success: function (response) {
+                document.getElementById("sensors").innerHTML = response;
+
+
+
+
+
+                }
+            })
+        }
+    </script>
+
+<p id="sensors">sensor 1: </p>
+
+<iframe width="700" height="570" margin="500px" align="right"; src="https://www.youtube.com/embed/eQVS0R4G05s">
+</iframe>
+
+<span style="display:inline-block;padding:5px; font-size: 140%;font-weight: bold;">
+<br>
+<a href="/cmd/F"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Green_Arrow_Up.svg/1200px-Green_Arrow_Up.svg.png"></a>
+<br><br><br><br>
+<img hspace="10" style="padding-left: 5px">
+<a href="/cmd/L"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Green_Arrow_Left.svg"></a>
+<img hspace="20" style="padding-left: 10px">
+<a href="/cmd/S"><img style="height: 63px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Blank_stop_sign_octagon.svg/170px-Blank_stop_sign_octagon.svg.png"></a>
+<img hspace="20" style="padding-left: 10px">
+<a href="/cmd/R"><img style="height: 63px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Green_Arrow_Right.svg/1200px-Green_Arrow_Right.svg.png"></a>
+<img hspace="10" style="padding-left: 5px">
+<br><br><br><br>
+<a href="/cmd/B"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Green_Arrow_Down.svg/700px-Green_Arrow_Down.svg.png"></a>
+<br><br>
+
+</span>
+</div>
+</body>
+</html>
+

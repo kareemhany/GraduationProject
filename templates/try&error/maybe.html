@@ -1,0 +1,177 @@
+<html>
+<head>
+<style>
+
+
+a:link, a:visited {
+ 
+    background-color:transparent;
+    color:grey;
+    position:relative;
+    border:none ;
+    
+    padding: 10px solid Ghostwhite;
+   text-decoration: none;
+   display: inline-block;
+   margin:20px;
+   height: 60px; 
+   width: 60px
+   
+     
+}
+body {
+            background-image: url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+            
+        }
+ 
+a:hover, a:active   {
+  background-color: red;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+div.divImgContainer {  position:absolute; top:180px; left:650px; bottom:200; right:10px; height:580px; border:5px solid black; width:795px;}
+ 
+/* Popup container - can be anything you want */
+.popup {
+
+  cursor: pointer;
+position:absolute;
+top:0;
+left:0px; 
+bottom:0; 
+right:0px; 
+height:700px;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: none;
+  color:orange;
+  font-size:larger;
+  text-align: left;
+  border-radius: 6px;
+  padding: 7px;
+  position: fixed;
+  z-index: 1;
+  top:10%;
+  left: 2%;
+  margin-left: -40px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  bottom:80%;
+  left: 41%;
+  margin-left: -5px;
+  border-width: 11px;
+  border-style: solid;
+  border-color: orange transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+
+    window.onload = function() {
+        var imgX;
+        var imgY;
+        document.getElementById('myimage').addEventListener('click', function(e) {
+            var ratioX = e.target.naturalWidth / e.target.offsetWidth;
+            var ratioY = e.target.naturalHeight / e.target.offsetHeight;
+
+            var domX = e.x + window.pageXOffset - e.target.offsetLeft;
+            var domY = e.y + window.pageYOffset - e.target.offsetTop;
+
+            imgX = Math.round(domX * ratioX);
+            imgY = Math.round(domY * ratioY);
+            var a=document.getElementById("myimage").value;
+            console.log(imgX, imgY);
+               var latlon = imgX + "," + imgY;
+               var img_url = "https://image.flaticon.com/icons/png/128/2991/2991231.png?center=+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+                   document.getElementById("myimage").innerHTML = "<img src='"+img_url+"'>";
+                           
+           
+            /*
+            $.ajax({
+                type: 'GET',
+                url: '/getpose/'+imgX+','+imgY,
+
+                success: function()
+                {
+                   console.log('gun');
+                }
+                 
+            })
+            
+            $.post('/getpose','hamada',function(){console.log('ok')});*/
+            
+            
+   
+        })
+        document.getElementById('button_go').addEventListener('click', function(e) {
+            
+            $.ajax({
+                type: 'GET',
+                url: '/getpose/'+imgX+','+imgY,
+
+                success: function()
+                {
+                   console.log('gun');
+                }
+
+                 
+            })
+            })
+  
+            function myFunction(event) {
+                  var popup = document.getElementById("myPopup")
+                  popup.classList.toggle("show");
+                  popup.style.top =  (event.clientY)+'px';
+                  popup.style.left = (event.clientX) +'px';
+		    
+		    
+	    };
+	    
+    
+    </script>
+<body>
+</head>
+<body>
+
+
+<div class="divImgContainer popup" onclick="myFunction(event);"> <img id="myimage" style="height:580px" src="/static/map_01.png">
+<a href="/" align="right">
+      
+  <div class="popuptext" id="myPopup"></div>
+</div>
+</div>
+
+
+     <a href="/" align="left">
+        <img style="height: 65px" src="https://cdn.pixabay.com/photo/2017/08/29/09/40/color-is-changable-in-ps-2692604__340.png">           
+    </a>
+    <a align="left">
+        <img id=button_go style="height: 65px" src="https://www.pngarts.com/files/8/Green-Go-Button-PNG-Photo.png"> 
+
+   </body> 
+</html>
