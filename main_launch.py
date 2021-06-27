@@ -1,3 +1,4 @@
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -105,7 +106,8 @@ def generate_launch_description():
                               'params_file': params_file,
                               'use_lifecycle_mgr': 'false',
                               'map_subscribe_transient_local': 'true'}.items()),    ])
-       
+        
+      
     
     # Launch rviz
     start_rviz_cmd = Node(
@@ -188,3 +190,8 @@ def generate_launch_description():
     
 
     return ld
+    
+    
+    
+  
+

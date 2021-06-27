@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>CIC web application</title>
+<title>CIC Medical web Application</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+
+body {
+  font-size: 20px;
+  color:white;
+}
+ul {
+
+  margin: 0;
+  background-color: #111111;
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+  
+}
+
+</style>
+
+
+
+<body style="background-color: white;">
 
 <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-  <img class="w3-image" src="/static/index.jpeg" alt="Me" width="1500" height="600">
+  <img class="w3-image" src="/static/index1.png" alt="Me" width="1500" height="600">
   <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
   </div>
   
  <!-- Navbar -->
+<ul>
 <div class="w3-middle">
-  <div class="w3-bar w3-grey w3-card">
-    <a  href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large">ABOUT</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-    
+  <div class="w3-bar w3-# w3-card">
+    <a  href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home">
+      </i> HOME</a>
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="More">MODE<i class="fa fa-caret-down"></i></button>     
+      <button class="w3-padding-large w3-button">MODE <i class="fa fa-caret-down"></i></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
        
-        <a href="/automatic" class="w3-bar-item w3-button">automatic</a>
-        <a href="/remote" class="w3-bar-item w3-button">Manual</a>
+        <a href="/automatic" class="w3-bar-item w3-button"><b>automatic </b></a>
+        <a href="/remote" class="w3-bar-item w3-button"><b>Manual </b></a>
       </div>
-    </div>
+    </div>    
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fa fa-user" aria-hidden="true" style="font-size:17px"></i> CONTACT</a>
+    
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button">ABOUT <i class="fa fa-caret-down"></i></button>           
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">       
+        <a style="font-size:20px" class="w3-bar-item w3-button"><b><i>Our Robot is a multi-task utility robot designed with a perfect mix of technology like AI, Autonomous solutions and IOT  to work effectively on cleaning and servicing in hospitals</i> </a>
+       
+      </div>
+    </div>    
+    
+    
     
   </div>
 </div>
-
+</ul>
 
 
 <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
 </div>
+
+
+  
+
+
+
 <!-- Page content -->
 <div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
 
@@ -69,7 +106,7 @@
       </div>
       <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
     </form><br>
-    <p>sponsered by <a href="https://tekomoro.com/" target="_blank" class="w3-hover-text-green">tekomoro</a></p>
+    <p>sponsered by <a href="https://tekomoro.com/" target="_blank" class="w3-hover-text-green"><b><i>tekomoro</i></b></a></p>
 
 
 

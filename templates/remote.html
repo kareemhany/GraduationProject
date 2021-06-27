@@ -1,47 +1,110 @@
 <html> 
+<title>Manual Mode</title>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script Language="Javascript">
+
 var xmlhttp;
 xmlhttp=new XMLHttpRequest();
 </script>
 </head>
 <style>
-body {background-image:url(https://cdn.hipwallpaper.com/i/89/50/WCQKrM.jpg);
-margin:100px;
+
+body {
+  margin:0;
+  font-size: 15px;
+  color:white;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: darkslategrey;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 20px;
+  
+}
+
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+ 
+  
+
+  
+}
+
+li a:hover:not(.active) {
+  background-color: #ccc;
+}
+body {background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAACUCAMAAAD70yGHAAAAA1BMVEUAAACnej3aAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBnA8UkAAEmGMCJAAAAAElFTkSuQmCC');
+margin:0px;
   }
 h1 {
-color:white;
+   margin:125px;
+
+   color:yellow;
 
 }
 p {
 
-color:blue;
+color:white;
 text-font:20px;
 width:160px
 }
-a:link, a:visited {
- 
-    background-color:white;
-    position:relative;
-    border:10px solid GhostWhite;
-   text-decoration: none;
-   display: inline-block;
-   margin:20px;
-   height: 63px; 
-   width: 63px
-   
-     
-}
 
- 
-a:hover, a:active   {
-  background-color: red;
-}
 </style>
 <body>
-<a href="/"><img style="height: 65px"src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png"></a>
+    <ul>
+       <div class="w3-middle">
+  <div class="w3-bar w3-# w3-card">
+    <a  href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home"></i> HOME</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button">MODE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+       
+        <a href="/automatic" class="w3-bar-item w3-button"><b>automatic</b></a>
+        <a href="/remote" class="w3-bar-item w3-button"><b>Manual</b></a>
+      </div>
+    </div>    
+    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fa fa-user" aria-hidden="true" ></i> CONTACT</a>
+    
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button">ABOUT <i class="fa fa-caret-down"></i></button>           
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">       
+        <a style="font-size:20px" class="w3-bar-item w3-button"><b><i>Our Robot is a multi-task utility robot designed with a perfect mix of technology like AI, Autonomous solutions and IOT  to work effectively on cleaning and servicing in hospitals</i> </a>
+       
+      </div>
+    </div>  
+    
+  
+    
+    
+    
+  </div>
+ </div>
+</ul>
+
+  <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+</div>  
+
+
+
 <div style="text-align:center">
-<h1> To Be Determined Later On </h1>
+
+    <h1 >Warning : Robot is Manually Controlled please takecare </h1> 
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         var myVar = setInterval(updateReadings, 1000);
@@ -68,24 +131,26 @@ a:hover, a:active   {
         }
     </script>
 
-<p id="sensors">sensor 1: </p>
 
-<iframe width="700" height="570" margin="500px" align="right"; src="https://www.youtube.com/embed/eQVS0R4G05s">
+              
+
+
+<iframe width="600" height="470" margin="600px" align=""; src="https://www.youtube.com/embed/eQVS0R4G05s">
 </iframe>
 
-<span style="display:inline-block;padding:5px; font-size: 140%;font-weight: bold;">
+<span style="display:inline-block;padding:0px; font-size: 140%;font-weight: bold;">
 <br>
-<a href="/cmd/F"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Green_Arrow_Up.svg/1200px-Green_Arrow_Up.svg.png"></a>
+<a href="/cmd/moving Forward"><img style="height: 63px"src="/static/uparrow.png"></a>
 <br><br><br><br>
-<img hspace="10" style="padding-left: 5px">
-<a href="/cmd/L"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Green_Arrow_Left.svg"></a>
-<img hspace="20" style="padding-left: 10px">
-<a href="/cmd/S"><img style="height: 63px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Blank_stop_sign_octagon.svg/170px-Blank_stop_sign_octagon.svg.png"></a>
-<img hspace="20" style="padding-left: 10px">
-<a href="/cmd/R"><img style="height: 63px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Green_Arrow_Right.svg/1200px-Green_Arrow_Right.svg.png"></a>
-<img hspace="10" style="padding-left: 5px">
+<img hspace="20">
+<a href="/cmd/Moving Left"><img style="height: 63px"src="/static/leftarrow.png"></a>
+<img hspace="20" >
+<a href="/cmd/STOP"><img style="height: 63px"src="/static/stop.png"></a>
+<img hspace="20" >
+<a href="/cmd/Moving Right"><img style="height: 63px"src="/static/rightarrow.png"></a>
+<img hspace="20" >
 <br><br><br><br>
-<a href="/cmd/B"><img style="height: 65px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Green_Arrow_Down.svg/700px-Green_Arrow_Down.svg.png"></a>
+<a href="/cmd/Moving Backward"><img style="height: 63px"src="/static/downarrow.png"></a>
 <br><br>
 
 </span>

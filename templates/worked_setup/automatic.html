@@ -1,45 +1,53 @@
+<!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
-
-a:link, a:visited {
- 
-    background-color:white;
-    color:black;
-    position:relative;
-    border:10px solid ;
-    
-    padding: 10px solid Ghostwhite;
-   text-decoration: none;
-   display: inline-block;
-   margin:20px;
-   height: 63px; 
-   width: 63px
-   
-     
-}
 body {
-            background-image: url('https://jooinn.com/images/night-sky-1.jpg');
-            
-        }
+  font-size: 17px;
+  color:white;
+}
+
+
  
-a:hover, a:active   {
-  background-color: red;
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: darkslategrey;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 20px;
+  
 }
 
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-div.divImgContainer { position:absolute; top:100px; left:10px; bottom:10px; right:10px; }
- div#divMark { position:fixed; background-color:green; width:10px; height:10px;}
 
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+ 
+  
+
+  
+}
+
+li a:hover:not(.active) {
+  background-color: #ccc;
+}
 
 
 
 </style>
+
+</head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
 
@@ -57,24 +65,8 @@ div.divImgContainer { position:absolute; top:100px; left:10px; bottom:10px; righ
             imgY = Math.round(domY * ratioY);
             var a=document.getElementById("myimage").value;
             console.log(imgX, imgY);
-               var latlon = imgX + "," + imgY;
-               var img_url = "https://image.flaticon.com/icons/png/128/2991/2991231.png?center=+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
-                   document.getElementById("myimage").innerHTML = "<img src='"+img_url+"'>";
                            
            
-            /*
-            $.ajax({
-                type: 'GET',
-                url: '/getpose/'+imgX+','+imgY,
-
-                success: function()
-                {
-                   console.log('gun');
-                }
-                 
-            })
-            
-            $.post('/getpose','hamada',function(){console.log('ok')});*/
             
             
    
@@ -93,10 +85,6 @@ div.divImgContainer { position:absolute; top:100px; left:10px; bottom:10px; righ
                  
             })
             
-	    
-	      
-		    
-		    /*$.post('/getpose','hamada',function(){console.log('ok')});*/
 		    
 		    
 	   
@@ -105,17 +93,39 @@ div.divImgContainer { position:absolute; top:100px; left:10px; bottom:10px; righ
 	    
     
     </script>
+    
+<body style="background-color: black;">
+  <ul>
+                      <div class="w3-middle">
+  <div class="w3-bar w3-# w3-card">
+    <a  href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button">MODE<i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+       
+        <a href="/automatic" class="w3-bar-item w3-button"><b>automatic</b></a>
+        <a href="/remote" class="w3-bar-item w3-button"><b>Manual</b></a>
+      </div>
+    </div>    
+    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button">ABOUT<i class="fa fa-caret-down"></i></button>           
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">       
+        <a style="font-size:20px" class="w3-bar-item w3-button"><b><i>Our Robot is a multi-task utility robot designed with a perfect mix of technology like AI, Autonomous solutions and IOT  to work effectively on cleaning and servicing in hospitals</i> </a>
+       
+      </div>
+    </div>  
+    
+  </div>
+  </div>
+  </ul>
+     <center><img style= "margin:100px" id="myimage" width="945" height="681px"  src="/static/rviz.png" align="center"> <br>
+      <a align="center">
+        <img id='button_go' style="height: 65px" src="/static/goo.png">    
 
-<body>
-</head>
 
-
-<img id="myimage" width="1000px" height="700px" src="/static/map_01.png" align="center"> <br>
-
-  <a href="/" align="left">
-        <img style="height: 65px" src="https://www.pikpng.com/pngl/m/11-112535_187-homepage-icon-png-2598-house-icon-in.png">        
-    </a>
-<a align="left">
-        <img id=button_go style="height: 65px" src="https://www.pngarts.com/files/8/Green-Go-Button-PNG-Photo.png">        
-   </body> 
+  
+</body>
 </html>

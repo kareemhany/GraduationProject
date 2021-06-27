@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import rclpy # Import the ROS client library for Python
 from rclpy.node import Node # Enables the use of rclpy's Node class
 from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Path
 
 
 
@@ -26,9 +27,9 @@ def on_message(client, userdata, msg):
     
     
     inMinX = 0
-    inMaxX = 528
+    inMaxX = 945
     inMinY = 0
-    inMaxY = 386
+    inMaxY = 681
     outMinX = -8.36
     outMaxX = 18
     outMinY = 8.18
@@ -45,6 +46,16 @@ def on_message(client, userdata, msg):
     
     publisher_goal_values.publish(goalMsg)
 
+def path_feedback(data):
+    print ("Plan")
+    res = ""
+    print ("Before: ", len(data.poses))
+    step = 20
+    for i in range(0,len(data.poses),step):
+        point = "{:0.2f},{:0.2f}_".format(data.poses[i].pose.position.x, data.poses[i].pose.position.y)
+        res += point
+    print ("After: ", len(res.split('_')))
+    client.publish("tekomoro/carkyo/plan", res)
 
 def main(args=None):
 	global publisher_goal_values
@@ -53,7 +64,8 @@ def main(args=None):
 	  
 	# Create the node
 	x = Node('values')
-	publisher_goal_values = x.create_publisher(PoseStamped, '/goal_pose', 10)                
+	publisher_goal_values = x.create_publisher(PoseStamped, '/goal_pose', 10) 
+	global_plan_sub = x.create_subscription(Path, "/plan" , path_feedback, 1)               
 	client = mqtt.Client()
 	client.on_connect = on_connect
 	client.on_message = on_message
