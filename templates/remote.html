@@ -112,13 +112,6 @@ width:160px
             $.ajax({
                 url: '/getReadings',
                 type: 'get',
-                success: function getArraySum(data){
-                             var total=0;
-                             for(var i in data) {
-                             total += data[i];
-                                    }
-                        return total;
-}
                 success: function (response) {
                 document.getElementById("sensors").innerHTML = response;
 

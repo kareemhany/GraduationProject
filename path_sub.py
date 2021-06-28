@@ -19,47 +19,33 @@ def on_connect(client, userdata, flags, rc):
 
 
 
-# The callback for when a PUBLISH message is received from the server.
-def on_message(client, userdata, msg):
-    global publisher_goal_values
-    
-    x,y = msg.payload.decode('utf-8').split(',')
-    goalMsg = PoseStamped()
-    
-    
-    inMinX = 0
-    inMaxX = 945
-    inMinY = 0
-    inMaxY = 681
-    outMinX = -8.36
-    outMaxX = 18
-    outMinY = 8.18
-    outMaxY = -11.1
-    outx = ((float(x)- inMinX) / (inMaxX - inMinX)) * (outMaxX - outMinX) + outMinX
-    outy = ((float(y) - inMinY) / (inMaxY - inMinY)) * (outMaxY - outMinY) + outMinY
-    goalMsg.pose.position.x = outx
-    goalMsg.pose.position.y = outy
-    
-    goalMsg.header.frame_id    = "map"
-    print (goalMsg)
-     
-    # Publish the x coordinates to the topic
-    publisher_goal_values.publish(goalMsg)
-    
+
+	
+def path_feedback(data):
+    print ("Plan")
+    res = ""
+    print ("Before: ", len(data.poses))
+    step = 20
+    for i in range(0,len(data.poses),step):
+        point = "{:0.2f},{:0.2f}_".format(data.poses[i].pose.position.x, data.poses[i].pose.position.y)
+        res += point
+    print ("After: ", len(res.split('_')))
+    client.publish("cic/plan", res)
 
 
 def main(args=None):
-	global client, publisher_goal_values
+	global client, publisher_goal_values, x
 	# Initialize the rclpy library
 	client = mqtt.Client()
 	client.on_connect = on_connect
-	client.on_message = on_message
 	# Create the node
 	rclpy.init(args=args)
 	x = Node('values')
 	publisher_goal_values = x.create_publisher(PoseStamped, 'goal_pose', 10) 
+	global_plan_sub = x.create_subscription(Path, "plan" , path_feedback, 10) 
 	client.connect("broker.hivemq.com", 1883, 60)
-	client.loop_forever()
+	rclpy.spin(x)
+	#client.loop_forever()
 	
     
     
