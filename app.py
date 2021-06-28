@@ -45,9 +45,16 @@ def update():
     
   
 ## Requests:
+outMinX = 0
+outMaxX = 945
+outMinY = 0
+outMaxY = 681
+inMinX = -8.36
+inMaxX = 18
+inMinY = 8.18
+inMaxY = -11.1
 @app.route('/getPlan', methods=['GET'])
 def updateplan():
-    print('getting plan')
     global plan
     if (plan == ''):
         return ''
@@ -56,16 +63,16 @@ def updateplan():
     temp = plan.split('_')
     for point in temp:
         pt = point.split(',')
-        print(pt)
-        x = (pt [0])
-        y = (pt [1])
-        
-        
+        if (len(pt) == 2):
+            x = (pt [0])
+            y = (pt [1])
+       
+               
 ## Equation
-    
-
-    out += str(x)+','+str(y)+'_'
-
+           
+            outx = ((float(x)- inMinX) / (inMaxX - inMinX)) * (outMaxX - outMinX) + outMinX
+            outy = ((float(y) - inMinY) / (inMaxY - inMinY)) * (outMaxY - outMinY) + outMinY
+            out += str(outx)+','+str(outy)+'_'
     return out[0:-1]
     
 
@@ -91,6 +98,9 @@ def onPlan(_, __, msg):
     print(plan)
     
 
+def on_disconnect(client, userdata, rc):
+    print("disconnecting reason  "  +str(rc))
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
     client.message_callback_add('cic/data', onFB)
@@ -106,6 +116,7 @@ if __name__ == '__main__':
     client = mqtt.Client()
     print ('Created Client')
     client.on_connect = on_connect
+    client.on_disconnect = on_disconnect
     print ('Added OnConnect')
     client.on_message = on_message
     client.connect('broker.hivemq.com', 1883, 60)

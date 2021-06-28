@@ -71,18 +71,11 @@
     console.log("after draw");
     function getMousePosition(canvas, event) {
       let rect = canvas.getBoundingClientRect();
-      let imgX = event.clientX - rect.left;
-      let imgY = event.clientY - rect.top;
+      imgX = event.clientX - rect.left;
+      imgY = event.clientY - rect.top;
+
       console.log(imgX, imgY);
-      $.ajax({
-        type: 'GET',
-        url: '/getpose/' + imgX + ',' + imgY,
-
-        success: function () {
-          console.log('gun');
-        }
-
-      })
+      
 
       var icon = new Image();
       icon.src = "/static/pin1.png";
@@ -96,6 +89,16 @@
     });
 
     document.getElementById('button_go').addEventListener('click', function (e) {
+      
+      $.ajax({
+        type: 'GET',
+        url: '/getpose/' + imgX + ',' + imgY,
+
+        success: function () {
+          console.log('gun');
+        }
+
+      })
     });
 
     var myVar = setInterval(getPlan, 1000);
@@ -105,13 +108,22 @@
                 type: 'get',
                 success: function (response) {
                   var icon = new Image();
-                  icon.src = "/static/circle.png";
+                  icon.src = "/static/circlept.png";
                   var res = response.split("_");
                   ctx.drawImage(background, 0, 0);
                   for (var point of res){
                     point = point.split(",");
-                    ctx.drawImage(icon, point[0], point[1]);
+                    ctx.drawImage(icon, point[0]-4, point[1]-4);
+
                   }
+
+                  
+                  var pin = new Image();
+                  pin.src = "/static/pin1.png";
+                  pt = res[res.length-1].split(",")
+                  ctx.drawImage(pin, imgX-12, imgY-24);
+
+
                 }
             })
         }
@@ -122,7 +134,7 @@
 
 
 
-<body style="background-color: white;">
+<body style="background-color: black;">
   <ul>
     <div class="w3-middle">
       <div class="w3-bar w3-# w3-card">

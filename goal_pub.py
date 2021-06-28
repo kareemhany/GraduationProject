@@ -6,7 +6,9 @@ from nav_msgs.msg import Path
 
 
 
-
+def on_disconnect(client, userdata, rc):
+    print("disconnecting reason  "  +str(rc))
+    
            
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -54,6 +56,7 @@ def main(args=None):
 	client = mqtt.Client()
 	client.on_connect = on_connect
 	client.on_message = on_message
+	client.on_disconnect = on_disconnect
 	# Create the node
 	rclpy.init(args=args)
 	x = Node('values')
