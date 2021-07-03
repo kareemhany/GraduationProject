@@ -5,9 +5,10 @@ from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path
 
 
-
+#check if disconect ---> connect again
 def on_disconnect(client, userdata, rc):
     print("disconnecting reason  "  +str(rc))
+    client.connect("broker.hivemq.com", 1883, 60)
     
            
 # The callback for when the client receives a CONNACK response from the server.
@@ -22,6 +23,8 @@ def on_connect(client, userdata, flags, rc):
 
 
 # The callback for when a PUBLISH message is received from the server.
+## publish goals that recieved from UI to ROS :
+#convert WEB coordinates to ROS coordinates to give them to ROS & visualize goal on RVIZ
 def on_message(client, userdata, msg):
     global publisher_goal_values
     

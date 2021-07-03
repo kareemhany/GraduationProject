@@ -1,3 +1,4 @@
+#imports
 from flask import render_template
 from flask import request 
 import paho.mqtt.publish as publish
@@ -9,7 +10,7 @@ app = Flask(__name__)
 data = ''
 plan = ''
 
-## Pages
+## load pages and link them with local host
 @app.route('/')
 def result1():
     return render_template('index.html')
@@ -25,7 +26,7 @@ def result3():
     
    
 
-## Commands
+## function that publish comannds of remote control 
 @app.route('/cmd/<val>')
 def cmdF(val):
     try:
@@ -35,16 +36,17 @@ def cmdF(val):
     return render_template('remote.html')
 
 
-## Requests:
+## get function to get sensor readings :
 @app.route('/getReadings', methods=['GET'])
 def update():
     global data
-    data = "1,2,3,4,5,6,7,8,9,10"
+    data = "sensors = 1,2,3,4,5,6,7,8,9,10"
     return data
     
     
   
-## Requests:
+## Get Request to get plan:
+#convert ros coordinates to web coordinates to visualize plan on the ui
 outMinX = 0
 outMaxX = 945
 outMinY = 0
@@ -76,7 +78,7 @@ def updateplan():
     return out[0:-1]
     
 
-
+##Get goal position 
 @app.route('/getpose/<val>')
 def updatepose(val):
     
@@ -87,6 +89,7 @@ def updatepose(val):
     
 
 ## MQTT:
+##decoding messages from string to the type what we need (int ,float,..) then print in terminal
 def onFB(_, __, msg):
     global data
     data = msg.payload.decode('utf-8')
@@ -98,15 +101,21 @@ def onPlan(_, __, msg):
     print(plan)
     
 
+
+
+#check if disconnect ---> connect again
 def on_disconnect(client, userdata, rc):
     print("disconnecting reason  "  +str(rc))
-
+    client.connect('broker.hivemq.com', 1883, 60)
+    
+#check connectivity and callback the functions and create MQTT subscriber on any topic called cic/...
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
     client.message_callback_add('cic/data', onFB)
     client.message_callback_add('cic/plan', onPlan)
     client.subscribe('cic/#')
 
+#(in_message) To access the message from you main script requires
 def on_message(client, userdata, msg):
     print (msg.topic)
 

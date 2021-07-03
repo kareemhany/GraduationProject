@@ -5,6 +5,8 @@ from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path
 import time
 
+
+#check if disconect ---> connect again
 def on_disconnect(client, userdata, rc):
     print("disconnecting reason  "  +str(rc))
     client.connect("broker.hivemq.com", 1883, 60)
@@ -13,7 +15,7 @@ def on_disconnect(client, userdata, rc):
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
 
-
+#this is the function that gives feedback of the plan that ros published and print it on terminal and publish it to MQTT on topic called (cic/plan)
 def path_feedback(data):
     #print ("Plan")
     res = ""
